@@ -27,5 +27,5 @@ class comment(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return
+        return f"{self.post}: {self.content[:50]}"
 
