@@ -18,4 +18,25 @@
 
 
     </article>
+    <section class="comments"></section>
+        <h3>Comments</h3>
+        <ul>
+            {% for comment in post.comments.all %}
+                <li>
+                    <strong>{{ comment.author }}</strong>:
+                    <p>{{ comment.content }}</p>
+                </li>
+            {% empty %}
+                <li>No comments yet. Be the first to comment!</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Form untuk menambah komentar -->
+        <h3>Add a Comment:</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </section>
 {% endblock %}
